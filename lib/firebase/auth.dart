@@ -37,6 +37,10 @@ class AuthRepository {
     }
   }
 
+  Future<UserModel?> getUserData(String uid) {
+    return _users.doc(uid).get().then((value) => UserModel.fromMap(value.data() as Map<String, dynamic>));
+  }
+
   User? getCurrentUser() {
     return _auth.currentUser;
   }
