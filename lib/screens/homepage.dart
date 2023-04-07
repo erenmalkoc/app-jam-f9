@@ -1,6 +1,11 @@
+import 'package:app_jam_f9/screens/new_post.dart';
+import 'package:app_jam_f9/screens/post.dart';
+import 'package:app_jam_f9/screens/user_profile.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+
 
 
 
@@ -35,7 +40,7 @@ class MyHomePage extends StatelessWidget {
               Icons.login,
               color: Colors.white,
             ),
-            onPressed: null
+             onPressed: null
           )
         ],
         shape:  OutlineInputBorder(
@@ -72,24 +77,41 @@ class MyHomePage extends StatelessWidget {
               ),
               leading: CircleAvatar(child: const Icon(Icons.account_circle_rounded)),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserProfile()),
+                );
               },
             ),
             ListTile(
               title: Text(
-                'Paylasımlar',
+                'Paylasimlar',
                 style: GoogleFonts.amaranth(
                     color: const Color(0XFF01579B), fontSize: 20),
               ),
               leading: const CircleAvatar(child: Icon(Icons.table_rows),),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Post()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Yeni Paylasim',
+                style: GoogleFonts.amaranth(
+                    color: const Color(0XFF01579B), fontSize: 20),
+              ),
+              leading: CircleAvatar(child: const Icon(Icons.add)),
+              onTap: () {
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AddNewPost()),
+                  );
+                }
+
               },
             ),
           ],

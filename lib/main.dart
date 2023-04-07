@@ -74,10 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: null,
       body: HomePage(),
-      floatingActionButton: FloatingActionButton(
+     floatingActionButton: FloatingActionButton(
         onPressed: AuthRepository().signOut,
         tooltip: 'Increment',
-        child: const Icon(Icons.logout),
+       child: const Icon(Icons.logout),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

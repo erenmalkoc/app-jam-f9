@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
     print(AuthRepository().getCurrentUser());
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Color(0XFF01579B),
+        backgroundColor:const Color(0XFF01579B),
         centerTitle: true,
         title: Text(
           'Register',
@@ -62,7 +62,7 @@ class _RegisterState extends State<Register> {
                 children: [
                   Text(
                     'Sign up to continue',
-                    style: GoogleFonts.amaranth(color :Color(0XFF01579B), fontSize: 30),
+                    style: GoogleFonts.amaranth(color :const Color(0XFF01579B), fontSize: 30),
                   ),
                   const SizedBox(height: 30),
                   TextFormField(
@@ -171,7 +171,7 @@ class _RegisterState extends State<Register> {
                   Container(
                     width: double.infinity,
                     child: Container(
-                      margin: EdgeInsets.only(right: 100,left: 100),
+                      margin: cosnt EdgeInsets.only(right: 100,left: 100),
                       child: Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
