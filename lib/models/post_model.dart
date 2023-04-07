@@ -6,6 +6,8 @@ class PostModel {
   final double likes;
   final String postedByName;
   final DateTime createdAt;
+  final String category;
+  final String subject;
 
   PostModel({
     required this.text,
@@ -15,6 +17,8 @@ class PostModel {
     required this.postedByName,
     required this.createdAt,
     required this.likes,
+    required this.category,
+    required this.subject,
   });
 
   PostModel copyWith({
@@ -25,6 +29,8 @@ class PostModel {
     List<String>? likedBy,
     double? likes,
     DateTime? createdAt,
+    String? category,
+    String? subject,
   }) {
     return PostModel(
       id: id ?? this.id,
@@ -34,6 +40,8 @@ class PostModel {
       likedBy: likedBy ?? this.likedBy,
       likes: likes ?? this.likes,
       createdAt: createdAt ?? this.createdAt,
+      category: category ?? this.category,
+      subject: subject ?? this.subject,
     );
   }
 
@@ -46,6 +54,8 @@ class PostModel {
       'likedBy': likedBy,
       'likes': likes,
       'createdAt': createdAt.millisecondsSinceEpoch,
+      'category': category,
+      'subject': subject,
     };
   }
 
@@ -58,11 +68,13 @@ class PostModel {
       likedBy: List<String>.from(map['likedBy'] ?? []),
       likes: map['likes'] ?? 0,
       createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
+      category: map['category'] ?? '',
+      subject: map['subject'] ?? '',
     );
   }
 
   @override
   String toString() {
-    return 'Post(id: $id, createdAt: $createdAt, text: $text, postedById: $postedById, postedByName: $postedByName, likedBy: $likedBy, likes: $likes)';
+    return 'Post(id: $id, createdAt: $createdAt, text: $text, postedById: $postedById, postedByName: $postedByName, likedBy: $likedBy, likes: $likes, category: $category, subject: $subject)';
   }
 }

@@ -19,62 +19,11 @@ class _FeedState extends State<Feed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Feed"),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const SizedBox(height: 20),
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                controller: postController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Please enter some text";
-                  }
-                  if (value.length > 260) {
-                    return "Please enter less than 260 characters";
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "",
-                ),
-                keyboardType: TextInputType.multiline,
-                maxLines: 4,
-                maxLength: 260,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      final user = await _auth.getUserData(_auth.getCurrentUser()!.uid);
-                      final post = PostModel(
-                          text: postController.text,
-                          postedById: user!.uid,
-                          id: const Uuid().v1(),
-                          likedBy: [],
-                          postedByName: user.name,
-                          createdAt: DateTime.now(),
-                          likes: 0);
-
-                      if (context.mounted) {
-                        await _firestore.addPost(post, context);
-                      }
-                      postController.clear();
-                    }
-                  },
-                  child: const Text("Post"),
-                ),
-              ],
-            ),
+            const SizedBox(height: 10),
             StreamBuilder<List<PostModel>>(
                 stream: _firestore.getMostLikedPosts(),
                 builder: (context, snapshot) {
