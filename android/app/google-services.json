@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1058479911131",
+    "project_id": "appjam-f9",
+    "storage_bucket": "appjam-f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058479911131:android:101a12a06c8eb12c53dcfe",
+        "android_client_info": {
+          "package_name": "com.example.app_jam_f9"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058479911131-q1r0qf2uaohkjn7d6usf587ggabb9d88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkiGHm6XWFjXR-VlfaPylU9PiBKS6f6-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058479911131-q1r0qf2uaohkjn7d6usf587ggabb9d88.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1058479911131-u95dde4j4bnbgfjtlinfuclf6kcu2tir.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appJamF9"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
