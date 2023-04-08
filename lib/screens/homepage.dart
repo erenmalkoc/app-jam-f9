@@ -1,6 +1,4 @@
 import 'package:app_jam_f9/firebase/auth.dart';
-import 'package:app_jam_f9/firebase/firestore.dart';
-import 'package:app_jam_f9/models/user_model.dart';
 import 'package:app_jam_f9/screens/feed.dart';
 import 'package:app_jam_f9/screens/new_post.dart';
 import 'package:app_jam_f9/screens/post.dart';
@@ -69,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         shape: OutlineInputBorder(
             borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
             borderRadius: BorderRadius.circular(10)),
-        backgroundColor:Color(0XFF01579B) ,
+        backgroundColor: const Color(0XFF01579B),
       ),
       body: const Center(
         child: Feed(),
@@ -106,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Profil',
                 style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
-              leading: CircleAvatar(child: const Icon(Icons.account_circle_rounded)),
+              leading: const CircleAvatar(child: Icon(Icons.account_circle_rounded)),
               onTap: () {
                 Navigator.push(
                   context,
@@ -134,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Yeni Paylaşım',
                 style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
-              leading: CircleAvatar(child: const Icon(Icons.add)),
+              leading: const CircleAvatar(child: Icon(Icons.add)),
               onTap: () {
                 {
                   Navigator.push(
@@ -149,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Uygulama Hakkında',
                 style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
-              leading: CircleAvatar(child: const Icon(Icons.info)),
+              leading: const CircleAvatar(child: Icon(Icons.info)),
               onTap: () {
                 {
                   Navigator.push(
@@ -160,23 +158,23 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              title: Text(
-                'Geliştiriciler',
-                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
-              ),
-              leading: CircleAvatar(child: const Icon(Icons.people_alt_rounded)),
-              onTap: null
-            ),
-            const SizedBox(height: 50,),
-            ListTile(
-              title: Center(
-                child: Text(
-                  'sürüm 0.1',
-                  style: GoogleFonts.robotoMono(color: const Color(0XFF01579B), fontSize: 15),
+                title: Text(
+                  'Geliştiriciler',
+                  style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
                 ),
-              ),
-              onTap: null
+                leading: const CircleAvatar(child: Icon(Icons.people_alt_rounded)),
+                onTap: null),
+            const SizedBox(
+              height: 50,
             ),
+            ListTile(
+                title: Center(
+                  child: Text(
+                    'sürüm 0.1',
+                    style: GoogleFonts.robotoMono(color: const Color(0XFF01579B), fontSize: 15),
+                  ),
+                ),
+                onTap: null),
           ],
         ),
       ),

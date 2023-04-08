@@ -18,17 +18,16 @@ class _UserProfileState extends State<UserProfile> {
   String email = "";
 
   void setMail() async {
-    final currentMail = await _auth.getCurrentUsersMail();
+    final currentMail = _auth.getCurrentUser()!.email;
     setState(() {
-      email = currentMail;
+      email = currentMail!;
     });
   }
 
-
   void setName() async {
-    final currentName = await _auth.getCurrentUsersName();
+    final currentName = await _auth.getUserData(_auth.getCurrentUser()!.uid);
     setState(() {
-      name = currentName;
+      name = currentName!.name;
     });
   }
 
@@ -42,51 +41,51 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(title: const Text('Profil'),
-        backgroundColor: Color(0XFF01579B),
+      appBar: AppBar(
+        title: const Text('Profil'),
+        backgroundColor: const Color(0XFF01579B),
         actions: const <Widget>[
           IconButton(
-              icon:  Icon(
+              icon: Icon(
                 Icons.login,
                 color: Colors.white,
               ),
-              onPressed: null
-          )
+              onPressed: null)
         ],
-        shape:  OutlineInputBorder(
-            borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
-            borderRadius: BorderRadius.circular(10)
-        ),
+        shape: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
+            borderRadius: BorderRadius.circular(10)),
       ),
-      body:  MyFeed(),
-
-      /*Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-                height: 100,
-                width: 100,
-                child: Image.asset('assets/ic_profile.png')),
-            Text(name,style: GoogleFonts.itim(color: Colors.blueGrey, fontSize: 30),),
-            Text(email,style: GoogleFonts.robotoMono(color: Colors.blueGrey, fontSize: 20),),
-            Text('------------------------',style: GoogleFonts.robotoMono(color: Colors.blueGrey, fontSize: 20),),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Benim Paylaştıklarım:',style: GoogleFonts.itim(color: Colors.blueGrey, fontSize: 20),),
-              ],
-            ),
-            MyFeed(),
-
-
-          ],
-
-
-        ),
-      ),*/
-
+      body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              SizedBox(height: 100, width: 100, child: Image.asset('assets/ic_profile.png')),
+              Text(
+                name,
+                style: GoogleFonts.itim(color: Colors.blueGrey, fontSize: 30),
+              ),
+              Text(
+                email,
+                style: GoogleFonts.robotoMono(color: Colors.blueGrey, fontSize: 20),
+              ),
+              Text(
+                '------------------------',
+                style: GoogleFonts.robotoMono(color: Colors.blueGrey, fontSize: 20),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Benim Paylaştıklarım:',
+                    style: GoogleFonts.itim(color: Colors.blueGrey, fontSize: 20),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const MyFeed(),
+            ],
+          )),
     );
   }
 }

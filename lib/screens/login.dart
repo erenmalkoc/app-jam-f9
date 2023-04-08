@@ -57,8 +57,7 @@ class _LoginState extends State<Login> {
               children: [
                 Text(
                   'Giriş Yap',
-                  style: GoogleFonts.sora(
-                      color: const Color(0XFF01579B), fontSize: 20),
+                  style: GoogleFonts.sora(color: const Color(0XFF01579B), fontSize: 20),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
@@ -67,24 +66,20 @@ class _LoginState extends State<Login> {
                   enableSuggestions: true,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.email),
-                enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
-                  borderRadius: BorderRadius.circular(30)
-              ),
-            focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Color(0XFF01579B),width: 2),
-                borderRadius: BorderRadius.circular(30)
-            ),
-            errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color:Color(0XFF01579B),width: 2),
-                borderRadius: BorderRadius.circular(30)
-            ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF01579B),width: 2),
-
-            ),
-            labelText: 'Email',
-          ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
+                        borderRadius: BorderRadius.circular(30)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2),
+                        borderRadius: BorderRadius.circular(30)),
+                    errorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2),
+                        borderRadius: BorderRadius.circular(30)),
+                    focusedErrorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0XFF01579B), width: 2),
+                    ),
+                    labelText: 'Email',
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Lütfen bir email giriniz';
@@ -97,7 +92,6 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 30),
                 TextFormField(
-
                   cursorColor: Colors.lightBlueAccent,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   enableSuggestions: false,
@@ -105,24 +99,19 @@ class _LoginState extends State<Login> {
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
-                      borderRadius: BorderRadius.circular(30)
-                    ),
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
+                        borderRadius: BorderRadius.circular(30)),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0XFF01579B),width: 2),
-                      borderRadius: BorderRadius.circular(30)
-                    ),
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2),
+                        borderRadius: BorderRadius.circular(30)),
                     errorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0XFF01579B),width: 2),
-                      borderRadius: BorderRadius.circular(30)
-                    ),
+                        borderSide: const BorderSide(color: Color(0XFF01579B), width: 2),
+                        borderRadius: BorderRadius.circular(30)),
                     focusedErrorBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0XFF01579B),width: 2),
-
+                      borderSide: BorderSide(color: Color(0XFF01579B), width: 2),
                     ),
                     labelText: 'Şifre',
                   ),
-
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Lütfen bir şifre giriniz';
@@ -145,10 +134,7 @@ class _LoginState extends State<Login> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Register()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Register()));
                       },
                       child: Text("Kayıt Ol",
                           style: Theme.of(context)
@@ -162,16 +148,16 @@ class _LoginState extends State<Login> {
                 Container(
                   width: double.infinity,
                   child: Container(
-                    margin: const EdgeInsets.only(right: 100,left: 100),
+                    margin: const EdgeInsets.only(right: 100, left: 100),
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          final res = await _auth.signInWithCredential(
-                              email, password, context);
-                          print(res);
-                          if (res != null) {
-                            Navigator.pop(context);
+                          final res = await _auth.signInWithCredential(email, password, context);
+                          if (context.mounted) {
+                            if (res != null) {
+                              Navigator.pop(context);
+                            }
                           }
                         }
                       },
@@ -183,8 +169,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: Text(
                         'Giriş Yap',
-                        style:
-                            GoogleFonts.sora(color: Colors.white, fontSize: 20),
+                        style: GoogleFonts.sora(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ),

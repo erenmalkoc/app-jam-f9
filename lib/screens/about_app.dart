@@ -1,7 +1,4 @@
-
 import 'package:flutter/material.dart';
-
-
 
 class AboutApp extends StatefulWidget {
   const AboutApp({Key? key}) : super(key: key);
@@ -11,30 +8,25 @@ class AboutApp extends StatefulWidget {
 }
 
 class _UserProfileState extends State<AboutApp> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(title: const Text('Uygulama Hakkında'),
-        backgroundColor: Color(0XFF01579B),
+      appBar: AppBar(
+        title: const Text('Uygulama Hakkında'),
+        backgroundColor: const Color(0XFF01579B),
         actions: const <Widget>[
           IconButton(
-              icon:  Icon(
+              icon: Icon(
                 Icons.login,
                 color: Colors.white,
               ),
-              onPressed: null
-          )
+              onPressed: null)
         ],
-        shape:  OutlineInputBorder(
-            borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
-            borderRadius: BorderRadius.circular(10)
-        ),
+        shape: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
+            borderRadius: BorderRadius.circular(10)),
       ),
-      body:  Scaffold(
+      body: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -42,10 +34,8 @@ class _UserProfileState extends State<AboutApp> {
               fit: BoxFit.cover,
             ),
           ),
-
         ),
       ),
-
     );
   }
 }

@@ -169,8 +169,10 @@ class _RegisterState extends State<Register> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           final res = await _auth.createUser(name, email, password, context);
-                          if (res != null) {
-                            Navigator.pop(context);
+                          if (context.mounted) {
+                            if (res != null) {
+                              Navigator.pop(context);
+                            }
                           }
                         }
                       },

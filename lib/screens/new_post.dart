@@ -24,7 +24,7 @@ class _AddNewPostState extends State<AddNewPost> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Yeni Paylaşım'),
-        backgroundColor: Color(0XFF01579B),
+        backgroundColor: const Color(0XFF01579B),
         actions: const <Widget>[
           IconButton(
               icon: Icon(
@@ -50,18 +50,16 @@ class _AddNewPostState extends State<AddNewPost> {
               DropdownButtonFormField(
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
-                      borderRadius: BorderRadius.circular(30)
-                  ),
+                      borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
+                      borderRadius: BorderRadius.circular(30)),
                   focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0XFF01579B),width: 2),
-                      borderRadius: BorderRadius.circular(30)
-                  ),
+                      borderSide: const BorderSide(color: Color(0XFF01579B), width: 2),
+                      borderRadius: BorderRadius.circular(30)),
                 ),
                 items: const [
-                  DropdownMenuItem<String>(child: Text("İstek"), value: "İstek"),
-                  DropdownMenuItem<String>(child: Text("Öneri"), value: "Öneri"),
-                  DropdownMenuItem<String>(child: Text("Şikayet"), value: "Şikayet")
+                  DropdownMenuItem<String>(value: "İstek", child: Text("İstek")),
+                  DropdownMenuItem<String>(value: "Öneri", child: Text("Öneri")),
+                  DropdownMenuItem<String>(value: "Şikayet", child: Text("Şikayet"))
                 ],
                 onChanged: (String? value) {
                   setState(() {
@@ -82,7 +80,6 @@ class _AddNewPostState extends State<AddNewPost> {
                   return null;
                 },
                 decoration: InputDecoration(
-
                   enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
                       borderRadius: BorderRadius.circular(30)),
@@ -157,7 +154,9 @@ class _AddNewPostState extends State<AddNewPost> {
                           await _firestore.addPost(post, context);
                         }
                       }
-                      Navigator.pop(context);
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
                     },
                     child: Text(
                       'Paylaş',
@@ -179,6 +178,6 @@ class Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card();
+    return const Card();
   }
 }

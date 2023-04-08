@@ -45,6 +45,7 @@ class AuthRepository {
     final user = await _users.doc(uid).get().then((value) => UserModel.fromMap(value.data() as Map<String, dynamic>));
     return user.name;
   }
+
   Future<String> getCurrentUsersMail() async {
     final currentUser = _auth.currentUser;
     final uid = currentUser!.uid;
@@ -83,14 +84,12 @@ class AuthRepository {
       }
       return credential;
     } on FirebaseAuthException catch (e) {
-      print(e);
       if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('The password provided is too weak.')));
       } else if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text('The account already exists for that email.')));
       } else {
-        print(e);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(e.message.toString()),
@@ -100,7 +99,6 @@ class AuthRepository {
 
       return null;
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
       return null;
     }

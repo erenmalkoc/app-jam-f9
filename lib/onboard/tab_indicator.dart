@@ -9,13 +9,11 @@ class TabIndicator extends StatefulWidget {
   State<TabIndicator> createState() => _TabIndicatorState();
 }
 
-class _TabIndicatorState extends State<TabIndicator>
-    with SingleTickerProviderStateMixin {
+class _TabIndicatorState extends State<TabIndicator> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
   void didUpdateWidget(covariant TabIndicator oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedIndex != widget.selectedIndex) {
       _tabController.animateTo(widget.selectedIndex);
@@ -25,8 +23,7 @@ class _TabIndicatorState extends State<TabIndicator>
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(length: OnBoardModels.onBoardItems.length, vsync: this);
+    _tabController = TabController(length: OnBoardModels.onBoardItems.length, vsync: this);
   }
 
   @override
