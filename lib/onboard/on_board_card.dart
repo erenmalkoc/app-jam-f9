@@ -14,7 +14,7 @@ class OnBoardCard extends StatelessWidget {
       children: [
         Text(
           model.title,
-          style: GoogleFonts.sora(color: const Color(0XFF01579B), fontSize: 35),
+          style: GoogleFonts.sora(color: const Color(0XFF01579B), fontSize: 30),
           textAlign: TextAlign.center,
         ),
         const SizedBox(
@@ -25,24 +25,32 @@ class OnBoardCard extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        Image.asset(model.imageWithPath),
+        Image.asset(model.imageWithPath,
+        width: 300,
+          height: 300,
+        ),
         model.title.length == 56
             ? Container(
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color(0XFF01579B),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: const EdgeInsets.all(16)),
-                  child: Text("Kullanmaya Başla", style: GoogleFonts.sora(color: Colors.white, fontSize: 20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Login()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0XFF01579B),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.all(16)),
+                      child: Text("Kullanmaya Başla", style: GoogleFonts.sora(color: Colors.white, fontSize: 15)),
+                    ),
+                  ],
                 ),
               )
             : const SizedBox(
