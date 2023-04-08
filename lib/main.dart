@@ -1,4 +1,5 @@
 import 'package:app_jam_f9/firebase/auth.dart';
+import 'package:app_jam_f9/onboard/on_board_view.dart';
 import 'package:app_jam_f9/screens/Register.dart';
 import 'package:app_jam_f9/screens/feed.dart';
 import 'package:app_jam_f9/screens/homepage.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: snapshot.data != null ? const HomePage() : const Login(),
+          home: snapshot.data != null ? const HomePage() : const OnBoardView(),
         );
       },
     );

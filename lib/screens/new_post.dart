@@ -23,7 +23,8 @@ class _AddNewPostState extends State<AddNewPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Yeni Paylasim'),
+        title: const Text('Yeni Paylaşım'),
+        backgroundColor: Color(0XFF01579B),
         actions: const <Widget>[
           IconButton(
               icon: Icon(
@@ -47,6 +48,16 @@ class _AddNewPostState extends State<AddNewPost> {
             children: [
               const SizedBox(height: 30),
               DropdownButtonFormField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color :Color(0XFF01579B),width:2.5),
+                      borderRadius: BorderRadius.circular(30)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Color(0XFF01579B),width: 2),
+                      borderRadius: BorderRadius.circular(30)
+                  ),
+                ),
                 items: const [
                   DropdownMenuItem<String>(child: Text("İstek"), value: "İstek"),
                   DropdownMenuItem<String>(child: Text("Öneri"), value: "Öneri"),
@@ -71,7 +82,7 @@ class _AddNewPostState extends State<AddNewPost> {
                   return null;
                 },
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.drive_file_rename_outline_sharp),
+
                   enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
                       borderRadius: BorderRadius.circular(30)),
@@ -146,10 +157,11 @@ class _AddNewPostState extends State<AddNewPost> {
                           await _firestore.addPost(post, context);
                         }
                       }
+                      Navigator.pop(context);
                     },
                     child: Text(
-                      'Payla',
-                      style: GoogleFonts.amaranth(color: Colors.white, fontSize: 20),
+                      'Paylaş',
+                      style: GoogleFonts.sora(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),

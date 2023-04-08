@@ -1,21 +1,33 @@
 import 'package:app_jam_f9/firebase/auth.dart';
 import 'package:app_jam_f9/firebase/firestore.dart';
 import 'package:app_jam_f9/models/post_model.dart';
+import 'package:app_jam_f9/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:uuid/uuid.dart';
 
-class Feed extends StatefulWidget {
-  const Feed({super.key});
+
+class MyFeed extends StatefulWidget {
+  const MyFeed({super.key});
 
   @override
-  State<Feed> createState() => _FeedState();
+  State<MyFeed> createState() => _FeedState();
 }
 
-class _FeedState extends State<Feed> {
+class _FeedState extends State<MyFeed> {
   final _firestore = FirestoreRepository();
   final _auth = AuthRepository();
   final postController = TextEditingController();
+String uid = '';
+  Future<void> getUid(String uid) async {
+    UserModel? user = await _auth.getUserData(uid);
+    if (user != null) {
+      // kullanıcı bilgilerine erişebilirsiniz
+     uid=user.uid;
+    }
+  }
+
+
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +38,7 @@ class _FeedState extends State<Feed> {
           children: [
             const SizedBox(height: 10),
             StreamBuilder<List<PostModel>>(
-                stream: _firestore.getMostLikedPosts(),
+                stream: _firestore.getPostsByUser(uid),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Expanded(
@@ -49,25 +61,22 @@ class _FeedState extends State<Feed> {
                                     children: [
                                       Icon(Icons.account_circle_rounded),
                                       Text(post.postedByName,
-                                      style: TextStyle(color: Color(0XFF004D40)),
+                                        style: TextStyle(color: Color(0XFF004D40)),
                                       ),
 
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
+                                  SizedBox(height: 10,),
                                   Text(
                                     post.subject,
                                     style:
-                                      GoogleFonts.sora(color: Colors.white, fontSize: 10),
+                                    GoogleFonts.sora(color: Colors.white, fontSize: 10),
                                   ),
                                   SizedBox(height: 10,),
                                   Text(post.text,
                                     style:
                                     GoogleFonts.sora(color: Colors.black, fontSize: 14),
                                   ),
-
 
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +91,7 @@ class _FeedState extends State<Feed> {
                                             _firestore.like(post, _auth.getCurrentUser()!.uid, context);
                                           }
                                         },
-                                        child: const Text("Destekle"),
+                                        child: const Text("Beğen"),
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: const Color(0XFF01579B),
                                           shape: RoundedRectangleBorder(
@@ -90,7 +99,7 @@ class _FeedState extends State<Feed> {
                                           ),
                                         ),
                                       ),
-
+                                      IconButton(onPressed: null, icon: Icon(Icons.delete))
                                     ],
                                   ),
                                 ],

@@ -40,8 +40,8 @@ class _RegisterState extends State<Register> {
         backgroundColor: const Color(0XFF01579B),
         centerTitle: true,
         title: Text(
-          'Register',
-          style: GoogleFonts.robotoMono(color: Colors.white, fontSize: 30),
+          'Kayıt Ol',
+          style: GoogleFonts.robotoMono(color: Colors.white, fontSize: 20),
         ),
       ),
       body: Container(
@@ -59,8 +59,8 @@ class _RegisterState extends State<Register> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Sign up to continue',
-                  style: GoogleFonts.amaranth(color: const Color(0XFF01579B), fontSize: 30),
+                  'Devam etmek için kayıt ol',
+                  style: GoogleFonts.sora(color: const Color(0XFF01579B), fontSize: 20),
                 ),
                 const SizedBox(height: 30),
                 TextFormField(
@@ -80,11 +80,11 @@ class _RegisterState extends State<Register> {
                     focusedErrorBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0XFF01579B), width: 2),
                     ),
-                    labelText: 'Name',
+                    labelText: 'İsim',
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return 'Bu alan boş geçilemez';
                     }
                     return null;
                   },
@@ -114,7 +114,7 @@ class _RegisterState extends State<Register> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return 'Bu alan boş geçilemez';
                     }
                     return null;
                   },
@@ -141,11 +141,11 @@ class _RegisterState extends State<Register> {
                     focusedErrorBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0XFF01579B), width: 2),
                     ),
-                    labelText: 'Password',
+                    labelText: 'Şifre',
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
+                      return 'Bu alan boş geçilemez';
                     }
                     return null;
                   },
@@ -175,8 +175,8 @@ class _RegisterState extends State<Register> {
                         }
                       },
                       child: Text(
-                        'Register',
-                        style: GoogleFonts.amaranth(color: Colors.white, fontSize: 20),
+                        'Kayıt Ol',
+                        style: GoogleFonts.sora(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ),

@@ -32,10 +32,11 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: const Color(0XFF01579B),
         title: Text(
-          'App Name',
+          'UpToSee',
           style: GoogleFonts.robotoMono(color: Colors.white, fontSize: 30),
         ),
       ),
@@ -55,9 +56,9 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Welcome',
-                  style: GoogleFonts.amaranth(
-                      color: const Color(0XFF01579B), fontSize: 30),
+                  'Giriş Yap',
+                  style: GoogleFonts.sora(
+                      color: const Color(0XFF01579B), fontSize: 20),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
@@ -86,7 +87,7 @@ class _LoginState extends State<Login> {
           ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
+                      return 'Lütfen bir email giriniz';
                     }
                     return null;
                   },
@@ -119,12 +120,12 @@ class _LoginState extends State<Login> {
                       borderSide: BorderSide(color: Color(0XFF01579B),width: 2),
 
                     ),
-                    labelText: 'Password',
+                    labelText: 'Şifre',
                   ),
 
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
+                      return 'Lütfen bir şifre giriniz';
                     }
                     return null;
                   },
@@ -137,7 +138,7 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      "Hesabın yok mu? ",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             fontSize: 13,
                           ),
@@ -149,7 +150,7 @@ class _LoginState extends State<Login> {
                             MaterialPageRoute(
                                 builder: (context) => const Register()));
                       },
-                      child: Text("Sign Up",
+                      child: Text("Kayıt Ol",
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -169,6 +170,9 @@ class _LoginState extends State<Login> {
                           final res = await _auth.signInWithCredential(
                               email, password, context);
                           print(res);
+                          if (res != null) {
+                            Navigator.pop(context);
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -178,9 +182,9 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       child: Text(
-                        'Login',
+                        'Giriş Yap',
                         style:
-                            GoogleFonts.amaranth(color: Colors.white, fontSize: 20),
+                            GoogleFonts.sora(color: Colors.white, fontSize: 20),
                       ),
                     ),
                   ),

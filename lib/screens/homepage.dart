@@ -9,6 +9,8 @@ import 'package:app_jam_f9/screens/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'about_app.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -18,7 +20,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: appTitle,
-      home: MyHomePage(title: "hi "),
+      home: MyHomePage(title: "Paylaşımlar"),
     );
   }
 }
@@ -67,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
         shape: OutlineInputBorder(
             borderSide: const BorderSide(color: Color(0XFF01579B), width: 2.5),
             borderRadius: BorderRadius.circular(10)),
+        backgroundColor:Color(0XFF01579B) ,
       ),
       body: const Center(
         child: Feed(),
@@ -101,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               title: Text(
                 'Profil',
-                style: GoogleFonts.amaranth(color: const Color(0XFF01579B), fontSize: 20),
+                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
               leading: CircleAvatar(child: const Icon(Icons.account_circle_rounded)),
               onTap: () {
@@ -113,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                'Yeni Paylasilanlar',
-                style: GoogleFonts.amaranth(color: const Color(0XFF01579B), fontSize: 20),
+                'Yeni Paylaşılanlar',
+                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
               leading: const CircleAvatar(
                 child: Icon(Icons.table_rows),
@@ -128,8 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                'Yeni Paylasim',
-                style: GoogleFonts.amaranth(color: const Color(0XFF01579B), fontSize: 20),
+                'Yeni Paylaşım',
+                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
               ),
               leading: CircleAvatar(child: const Icon(Icons.add)),
               onTap: () {
@@ -140,6 +143,39 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 }
               },
+            ),
+            ListTile(
+              title: Text(
+                'Uygulama Hakkında',
+                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
+              ),
+              leading: CircleAvatar(child: const Icon(Icons.info)),
+              onTap: () {
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AboutApp()),
+                  );
+                }
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Geliştiriciler',
+                style: GoogleFonts.itim(color: const Color(0XFF01579B), fontSize: 20),
+              ),
+              leading: CircleAvatar(child: const Icon(Icons.people_alt_rounded)),
+              onTap: null
+            ),
+            const SizedBox(height: 50,),
+            ListTile(
+              title: Center(
+                child: Text(
+                  'sürüm 0.1',
+                  style: GoogleFonts.robotoMono(color: const Color(0XFF01579B), fontSize: 15),
+                ),
+              ),
+              onTap: null
             ),
           ],
         ),

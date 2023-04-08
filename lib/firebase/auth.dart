@@ -45,6 +45,12 @@ class AuthRepository {
     final user = await _users.doc(uid).get().then((value) => UserModel.fromMap(value.data() as Map<String, dynamic>));
     return user.name;
   }
+  Future<String> getCurrentUsersMail() async {
+    final currentUser = _auth.currentUser;
+    final uid = currentUser!.uid;
+    final user = await _users.doc(uid).get().then((value) => UserModel.fromMap(value.data() as Map<String, dynamic>));
+    return user.email;
+  }
 
   Future<UserModel?> getUserData(String uid) {
     return _users.doc(uid).get().then((value) => UserModel.fromMap(value.data() as Map<String, dynamic>));
